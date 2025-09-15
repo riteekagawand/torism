@@ -1,0 +1,70 @@
+# Setup Guide
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory with your Contentstack credentials:
+
+```env
+CONTENTSTACK_API_KEY=your_api_key_here
+CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
+CONTENTSTACK_ENVIRONMENT=your_environment_here
+CONTENTSTACK_REGION=us
+```
+
+## Running the Application
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Create `.env.local` file with your Contentstack credentials:
+```bash
+# Copy the example and fill in your actual values
+cp .env.local.example .env.local
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Contentstack Integration
+
+The application is now configured to fetch data directly from your Contentstack instance. Make sure you have:
+
+1. **API Key**: Your Contentstack API key
+2. **Delivery Token**: Your Contentstack delivery token  
+3. **Environment**: Your Contentstack environment name
+4. **Region**: Your Contentstack region (default: us)
+
+## Content Types Required
+
+The application expects these content types in your Contentstack:
+
+### Tour Content Type
+- `title` (Single Line Textbox)
+- `description` (Rich Text Editor)
+- `country` (Single Line Textbox)
+- `duration` (Single Line Textbox)
+- `price` (Number)
+- `tags` (Tags)
+
+### FAQ Content Type
+- `title` (Single Line Textbox)
+- `question` (Single Line Textbox)
+- `answers` (Rich Text Editor)
+- `tags` (Tags)
+
+## Features
+
+- ✅ Home page with hero section and featured tours
+- ✅ Tours listing page with search and filters
+- ✅ FAQ page with search functionality
+- ✅ Contact page with form
+- ✅ Booking modal with form validation
+- ✅ Responsive design with Tailwind CSS
+- ✅ TypeScript support
+- ✅ Real Contentstack integration (no mock data)
