@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 
-// Import the SDK from the local copy
-import { ContentstackChatBot } from '../lib/chatbot-sdk';
+const ChatBot = dynamic(
+  () => import('../lib/chatbot-sdk').then(m => m.ReactChatBot),
+  { ssr: false }
+);
 
-interface SDKChatBotProps {
+export interface SDKChatBotProps {
   contentstackApiKey: string;
   contentstackToken: string;
   contentstackEnvironment: string;
@@ -15,61 +17,30 @@ interface SDKChatBotProps {
   theme?: 'light' | 'dark';
   width?: number;
   height?: number;
+  autoOpen?: boolean;
+  showWelcomeMessage?: boolean;
+  welcomeMessage?: string;
+  onMessage?: (message: any) => void;
+  onStateChange?: (state: any) => void;
+  onError?: (error: Error) => void;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
-const SDKChatBot: React.FC<SDKChatBotProps> = ({
+export default function SDKChatBot({
   contentstackApiKey,
   contentstackToken,
   contentstackEnvironment,
-  title = 'Travel Assistant',
-  placeholder = 'Ask me about tours and travel...',
-  position = 'bottom-right',
-  theme = 'light',
-  width = 350,
-  height = 500
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const chatbotRef = useRef<any>(null);
+  ...rest
+}: SDKChatBotProps) {
+  const config = {
+    contentstack: {
+      apiKey: contentstackApiKey,
+      deliveryToken: contentstackToken,
+      environment: contentstackEnvironment,
+    },
+    ...rest,
+  } as any;
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Create the chatbot using the SDK
-    chatbotRef.current = ContentstackChatBot.create({
-      contentstack: {
-        apiKey: contentstackApiKey,
-        deliveryToken: contentstackToken,
-        environment: contentstackEnvironment
-      },
-      title,
-      placeholder,
-      position,
-      theme,
-      width,
-      height
-    }, {
-      onMessage: (message) => {
-        console.log('New message:', message);
-      },
-      onStateChange: (state) => {
-        console.log('State changed:', state);
-      },
-      onError: (error) => {
-        console.error('Chatbot error:', error);
-      }
-    });
-
-    // Mount the chatbot
-    chatbotRef.current.mount(containerRef.current);
-
-    return () => {
-      if (chatbotRef.current) {
-        chatbotRef.current.destroy();
-      }
-    };
-  }, [contentstackApiKey, contentstackToken, contentstackEnvironment, title, placeholder, position, theme, width, height]);
-
-  return <div ref={containerRef} />;
-};
-
-export default SDKChatBot;
+  return <ChatBot {...config} />;
+}

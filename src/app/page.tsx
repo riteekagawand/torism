@@ -41,7 +41,6 @@ export default function Home() {
       setFaqs(faqsData.entries || []);
     } catch (error) {
       console.error('Error fetching data:', error);
-      // Show user-friendly error message
       alert('Failed to load data. Please check your Contentstack configuration.');
     } finally {
       setLoading(false);
@@ -54,7 +53,6 @@ export default function Home() {
   };
 
   const handleBookingSubmit = (data: BookingFormData) => {
-    // Here you would typically send the booking data to your backend
     console.log('Booking submitted:', data);
     alert('Booking submitted successfully! We will contact you soon.');
     setIsBookingOpen(false);
@@ -77,20 +75,18 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <SDKChatBot 
-           contentstackApiKey="blt354ba6a0b8b7e140"
-           contentstackToken="cs7f1c6103726d54fe1978f31f"
-           contentstackEnvironment="development"
-           title="Travel Assistant"
-           placeholder="Ask me about tours and travel..."
-           position="bottom-right"
-           theme="light"
-         />
-      {/* Configuration Check */}
+        contentstackApiKey={process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string}
+        contentstackToken={process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string}
+        contentstackEnvironment={process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string}
+        title="Travel Assistant"
+        placeholder="Ask me about tours and travel..."
+        position="bottom-right"
+        theme="light"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <ConfigCheck />
       </div>
       
-      {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
@@ -119,7 +115,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -163,7 +158,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Tours Section */}
       <section id="tours" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -196,7 +190,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section id="faq" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -223,7 +216,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Adventure?</h2>
@@ -241,7 +233,6 @@ export default function Home() {
 
       <Footer />
 
-      {/* Booking Modal */}
       {isBookingOpen && selectedTour && (
         <BookingForm
           tour={selectedTour}

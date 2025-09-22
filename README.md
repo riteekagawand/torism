@@ -48,7 +48,15 @@ Create a `.env.local` file in the root directory with your Contentstack credenti
 CONTENTSTACK_API_KEY=your_api_key_here
 CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
 CONTENTSTACK_ENVIRONMENT=your_environment_here
-CONTENTSTACK_REGION=us
+CONTENTSTACK_REGION=eu
+```
+
+For the client-side chatbot component, also add the public variables so the browser can read them:
+
+```env
+NEXT_PUBLIC_CONTENTSTACK_API_KEY=your_api_key_here
+NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
+NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=your_environment_here
 ```
 
 4. Run the development server:
@@ -193,7 +201,10 @@ The application can be deployed to any platform that supports Next.js:
 | `CONTENTSTACK_API_KEY` | Your Contentstack API key | Yes |
 | `CONTENTSTACK_DELIVERY_TOKEN` | Your Contentstack delivery token | Yes |
 | `CONTENTSTACK_ENVIRONMENT` | Your Contentstack environment | Yes |
-| `CONTENTSTACK_REGION` | Contentstack region (default: us) | No |
+| `CONTENTSTACK_REGION` | Contentstack region (default: eu) | No |
+| `NEXT_PUBLIC_CONTENTSTACK_API_KEY` | Public API key for chatbot (client) | Yes (for chatbot) |
+| `NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN` | Public delivery token for chatbot (client) | Yes (for chatbot) |
+| `NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT` | Public environment for chatbot (client) | Yes (for chatbot) |
 
 ## Contributing
 

@@ -3,9 +3,9 @@ import contentstack from '@contentstack/delivery-sdk';
 // Check if required environment variables are present
 const hasValidConfig = () => {
   return !!(
-    process.env.CONTENTSTACK_API_KEY &&
-    process.env.CONTENTSTACK_DELIVERY_TOKEN &&
-    process.env.CONTENTSTACK_ENVIRONMENT
+    process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY &&
+    process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN &&
+    process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT
   );
 };
 
@@ -15,10 +15,10 @@ let Stack: any = null;
 if (hasValidConfig()) {
   try {
     Stack = contentstack.stack({
-      apiKey: process.env.CONTENTSTACK_API_KEY!,
-      deliveryToken: process.env.CONTENTSTACK_DELIVERY_TOKEN!,
-      environment: process.env.CONTENTSTACK_ENVIRONMENT!,
-      region: (process.env.CONTENTSTACK_REGION as any) || 'eu',
+      apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY!,
+      deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN!,
+      environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT!,
+      region: (process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as any) || 'eu',
     });
   } catch (error) {
     console.error('Failed to initialize Contentstack:', error);
@@ -36,9 +36,9 @@ export async function testContentstackConnection() {
     
     console.log('Testing Contentstack connection...');
     console.log('Stack configuration:', {
-      apiKey: process.env.CONTENTSTACK_API_KEY ? 'Set' : 'Missing',
-      deliveryToken: process.env.CONTENTSTACK_DELIVERY_TOKEN ? 'Set' : 'Missing',
-      environment: process.env.CONTENTSTACK_ENVIRONMENT,
+      apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY ? 'Set' : 'Missing',
+      deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN ? 'Set' : 'Missing',
+      environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT,
       region: process.env.CONTENTSTACK_REGION || 'eu'
     });
     
@@ -63,9 +63,9 @@ export async function fetchTours() {
       console.log('Contentstack configuration check:', {
         hasValidConfig: hasValidConfig(),
         stackExists: !!Stack,
-        apiKey: process.env.CONTENTSTACK_API_KEY ? 'Set' : 'Missing',
-        deliveryToken: process.env.CONTENTSTACK_DELIVERY_TOKEN ? 'Set' : 'Missing',
-        environment: process.env.CONTENTSTACK_ENVIRONMENT ? 'Set' : 'Missing'
+        apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY ? 'Set' : 'Missing',
+        deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN ? 'Set' : 'Missing',
+        environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT ? 'Set' : 'Missing'
       });
       throw new Error('Contentstack configuration is missing or invalid');
     }

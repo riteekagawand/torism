@@ -13,7 +13,7 @@
     "@contentstack/delivery-sdk": "^4.9.0",
     "@heroicons/react": "^2.2.0",
     "axios": "^1.12.2",
-    "contentstack-chatbot": "file:../../chatbot-app/packages/chatbot-widget",
+    "contentstack-chatbot": "file:../chatbot-app/packages/chatbot-widget",
     "contentstack-chatbot-sdk": "file:../../chatbot-app/packages/contentstack-chatbot-sdk",
     "express": "^5.1.0",
     "next": "15.5.3",

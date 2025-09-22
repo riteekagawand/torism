@@ -7,8 +7,13 @@ const envTemplate = `# Contentstack Configuration
 # Replace these with your actual Contentstack credentials
 CONTENTSTACK_API_KEY=your_api_key_here
 CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
-CONTENTSTACK_ENVIRONMENT=your_environment_here
-CONTENTSTACK_REGION=us
+NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=your_environment_here
+CONTENTSTACK_REGION=eu
+
+# Client-side (public) variables for the chatbot component
+NEXT_PUBLIC_CONTENTSTACK_API_KEY=your_api_key_here
+NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
+NEXT_PUBLIC_NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=your_environment_here
 `;
 
 const envPath = path.join(__dirname, '.env.local');
@@ -26,5 +31,9 @@ console.log('\n🔧 Required Contentstack credentials:');
 console.log('   - API Key');
 console.log('   - Delivery Token');
 console.log('   - Environment Name');
-console.log('   - Region (optional, defaults to "us")');
+console.log('   - Region (optional, defaults to "eu")');
+console.log('\n🌐 Public vars for client chatbot:');
+console.log('   - NEXT_PUBLIC_CONTENTSTACK_API_KEY');
+console.log('   - NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN');
+console.log('   - NEXT_PUBLIC_NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT');
 console.log('\n📖 See SETUP.md for detailed instructions');

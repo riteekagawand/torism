@@ -28,22 +28,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        
-        {/* Chatbot iframe */}
-        <iframe 
-          src="standalone-chatbot.html" 
-          width="400" 
-          height="600" 
-          style={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            zIndex: 1000,
-            borderRadius: '15px',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-            border: 'none'
-          }}
-        />
       </body>
     </html>
   );

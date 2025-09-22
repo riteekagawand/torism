@@ -8,7 +8,15 @@ Create a `.env.local` file in the root directory with your Contentstack credenti
 CONTENTSTACK_API_KEY=your_api_key_here
 CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
 CONTENTSTACK_ENVIRONMENT=your_environment_here
-CONTENTSTACK_REGION=us
+CONTENTSTACK_REGION=eu
+```
+
+If you want the client-side chatbot to work, also expose read-only credentials to the browser using public vars:
+
+```env
+NEXT_PUBLIC_CONTENTSTACK_API_KEY=your_api_key_here
+NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
+NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=your_environment_here
 ```
 
 ## Running the Application
