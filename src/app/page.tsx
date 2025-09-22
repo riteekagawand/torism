@@ -74,15 +74,19 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <SDKChatBot 
-        contentstackApiKey={process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string}
-        contentstackToken={process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string}
-        contentstackEnvironment={process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string}
-        title="Travel Assistant"
-        placeholder="Ask me about tours and travel..."
-        position="bottom-right"
-        theme="light"
-      />
+      <SDKChatBot
+  contentstackApiKey={process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string}
+  contentstackToken={process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string}
+  contentstackEnvironment={process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string}
+  contentstackRegion="eu"
+  contentstackBaseUrl="https://eu-cdn.contentstack.com/v3"
+  title="Travel Assistant"
+  placeholder="Ask me about tours and travel..."
+  position="bottom-right"
+  theme="light"
+  onError={(e) => console.error('Chatbot error', e)}
+  onStateChange={(s) => console.log('Chatbot state', s)}
+/>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <ConfigCheck />
       </div>

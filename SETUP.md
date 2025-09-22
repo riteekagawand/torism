@@ -19,6 +19,18 @@ NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
 NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=your_environment_here
 ```
 
+For creating content (server), add management credentials and an admin secret:
+
+```env
+# Server-side management
+CONTENTSTACK_MANAGEMENT_TOKEN=your_management_token
+CONTENTSTACK_API_KEY=your_stack_api_key
+CONTENTSTACK_ENVIRONMENT=your_environment_name
+ADMIN_SHARED_SECRET=some-long-random-secret
+# Optional: expose matching admin key to the browser admin page
+NEXT_PUBLIC_ADMIN_SHARED_SECRET=some-long-random-secret
+```
+
 ## Running the Application
 
 1. Install dependencies:

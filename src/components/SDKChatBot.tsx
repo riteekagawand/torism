@@ -20,6 +20,8 @@ export interface SDKChatBotProps {
   autoOpen?: boolean;
   showWelcomeMessage?: boolean;
   welcomeMessage?: string;
+  contentstackRegion?: 'us' | 'eu' | 'azure';
+  contentstackBaseUrl?: string;
   onMessage?: (message: any) => void;
   onStateChange?: (state: any) => void;
   onError?: (error: Error) => void;
@@ -31,6 +33,8 @@ export default function SDKChatBot({
   contentstackApiKey,
   contentstackToken,
   contentstackEnvironment,
+  contentstackRegion,
+  contentstackBaseUrl,
   ...rest
 }: SDKChatBotProps) {
   const config = {
@@ -38,6 +42,8 @@ export default function SDKChatBot({
       apiKey: contentstackApiKey,
       deliveryToken: contentstackToken,
       environment: contentstackEnvironment,
+      region: contentstackRegion,                          // <- add
+      baseUrl: contentstackBaseUrl,                        // <- add
     },
     ...rest,
   } as any;
